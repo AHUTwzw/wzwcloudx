@@ -1,16 +1,13 @@
 package com.wzw.springcloud.controller;
 
+import com.wzw.springcloud.entities.Payment;
+import com.wzw.springcloud.response.CommonResult;
 import com.wzw.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
-import com.wzw.springcloud.entities.Payment;
-import com.wzw.springcloud.response.CommonResult;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author wuzhiwei
@@ -23,9 +20,6 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
 
     @PostMapping("/create")
     public CommonResult create(@RequestBody @Valid Payment payment) {
@@ -47,22 +41,5 @@ public class PaymentController {
         }else {
             return new CommonResult(500, "fail", payment);
         }
-    }
-
-    @GetMapping("/payment/discovery")
-    public Object getDiscovery() {
-        List<String> services = discoveryClient.getServices();
-        services.forEach(service -> {
-            log.info("----------element:" + service);
-        });
-
-        List<ServiceInstance> instances = discoveryClient
-                .getInstances("CLOUD-PAYMENT-SERVICE");
-        instances.forEach(instance -> {
-            log.info("serviceId:[{}], 主机名称:[{}], 端口号:[{}], url地址:[{}]",
-                    instance.getServiceId(), instance.getHost(),
-                    instance.getPort(), instance.getUri());
-        });
-        return this.discoveryClient;
     }
 }
