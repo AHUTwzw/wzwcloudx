@@ -13,17 +13,30 @@
     <module>cloud-provider-payment8002</module>
     <module>cloud-consumer-order80</module>
     <module>cloud-api-commons</module>
-      <module>cloud-eureka-server7001</module>
+    <module>cloud-eureka-server7001</module>
     <module>cloud-eureka-server7002</module>
     <module>cloud-provider-payment8002</module>
     <module>cloud-provider-payment8004</module>
-      <module>cloud-consumerzk-order80</module>
-      <module>cloud-auth-center</module>
+    <module>cloud-consumerzk-order80</module>
+    <module>cloud-auth-server</module>
+    <module>cloud-dmq-server</module>
+    <module>cloud-dwh-center</module>
+    <module>cloud-dcs-server</module>
+    <module>cloud-id-server</module>
+    <module>cloud-lock-server</module>
+    <module>cloud-im-server</module>
+    <module>cloud-slb-server</module>
+    <module>cloud-dtp-server</module>
+    <module>cloud-providerconsul-payment8006</module>
+      <module>cloud-consumerconsul-order80</module>
   </modules>
   <packaging>pom</packaging>
 
   <!-- 统一管理jar包版本 -->
   <properties>
+    <java.version>1.8</java.version>
+    <docker.image.prefix>cloud</docker.image.prefix>
+    <docker.plugin.version>1.0.0</docker.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -51,6 +64,12 @@
         <version>2.2.2.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
       </dependency>
       <!--spring cloud Hoxton.SR1-->
       <dependency>
