@@ -29,6 +29,7 @@
     <module>cloud-dtp-server</module>
     <module>cloud-providerconsul-payment8006</module>
       <module>cloud-consumerconsul-order80</module>
+      <module>cloud-cls-server</module>
   </modules>
   <packaging>pom</packaging>
 

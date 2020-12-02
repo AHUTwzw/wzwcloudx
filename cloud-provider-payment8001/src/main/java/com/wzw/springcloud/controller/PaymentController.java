@@ -3,11 +3,12 @@ package com.wzw.springcloud.controller;
 import com.wzw.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import com.wzw.springcloud.entities.Payment;
-import com.wzw.springcloud.response.CommonResult;
+import com.wzw.springcloud.rest.response.CommonResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -20,6 +21,9 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/payment")
 public class PaymentController {
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @Autowired
     private PaymentService paymentService;
@@ -64,5 +68,15 @@ public class PaymentController {
                     instance.getPort(), instance.getUri());
         });
         return this.discoveryClient;
+    }
+
+    /**
+     * ribbon负载均衡 rule
+     *
+     * @return
+     */
+    @GetMapping(value = "/lb")
+    public String getPaymentLB() {
+        return serverPort;
     }
 }
