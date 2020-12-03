@@ -12,6 +12,7 @@ import com.wzw.springcloud.rest.response.CommonResult;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wuzhiwei
@@ -78,5 +79,30 @@ public class PaymentController {
     @GetMapping(value = "/lb")
     public String getPaymentLB() {
         return serverPort;
+    }
+
+    /**
+     * feign超时测试
+     *
+     * @return
+     */
+    @GetMapping("/payment/feign/timeout")
+    public String paymentFeignTimeOut() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
+    }
+
+    /**
+     * P94用,sleuth+zipkin链路监控使用
+     *
+     * @return
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        return "hi,I am payment_zipkin server fall back, welcome to";
     }
 }
