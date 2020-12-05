@@ -17,6 +17,12 @@ spring:
             - springcoud-config
       #读取分支
       label: master
+  rabbitmq:
+    host: 42.192.23.171
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 
 #服务注册到Eureka地址
 eureka:
@@ -26,8 +32,8 @@ eureka:
 
 #3366 需要.
 # rabbitmq 相关配置,暴露bus刷新配置的断点
-#management:
-#  endpoints: #暴露bus刷新配置的断点
-#    web:
-#      exposure:
-#        include: "bus-refresh"
+management:
+  endpoints: #暴露bus刷新配置的断点
+    web:
+      exposure:
+        include: "bus-refresh"

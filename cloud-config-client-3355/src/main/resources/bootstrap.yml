@@ -13,11 +13,12 @@ spring:
       uri: http://localhost:3344  #配置中心地址
 
   # rabbitmq相关配置 15672是web管理界面的端口; 5672 是MQ访问的端口
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 42.192.23.171
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 
 eureka:
   client:
