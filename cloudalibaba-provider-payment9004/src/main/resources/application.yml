@@ -1,0 +1,15 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: nacos-payment-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 42.192.23.171:8848 #配置nacos地址
+#        server-addr: 192.168.81.129:1111 # 换成nginx的1111端口做集群
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
