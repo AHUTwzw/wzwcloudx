@@ -12,6 +12,11 @@ spring:
     url: jdbc:mysql://42.192.23.171:3306/wzwspringcloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     username: wuzhiwei
     password: wuzhiwei
+  zipkin:
+    base-url: http://localhost:9411
+    sleuth:
+      sampler:
+        probability: 1  #采样率值介于0-1之间,1标识全部采集
 
 eureka:
   client:
