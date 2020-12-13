@@ -1,0 +1,32 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: cloud-id-server
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://42.192.23.171:3306/did_config?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: wuzhiwei
+    password: wuzhiwei
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 42.192.23.171:8089 #配置nacos地址
+      config:
+        server-addr: 42.192.23.171:8089 # Nacos 作为配置中心地址
+        file-extension: yaml  #指定yaml格式的配置 yml会报错,nacos识别yaml
+        # 加载配置才需要以下配置
+        group: DEV_GROUP
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.wzw.springcloud.model
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -6,6 +6,10 @@ package com.wzw.springcloud.constant;
  */
 public interface BaseConstant {
 
+    interface resultConstant {
+        public final String SYS_INNOR_ERROR_= "SYSTEM INNOR ERROR";
+    }
+
     interface urlConstant {
         public final String BACKSLASH= "/";
         public final String POINT = ".";
