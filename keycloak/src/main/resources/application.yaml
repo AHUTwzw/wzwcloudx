@@ -21,6 +21,14 @@ keycloak:
         - user
       securityCollections:
         # name可以随便写
-        - name: common user
+        - name: user
           patterns:
             - /user/*
+    - authRoles:
+        # 以下路径需要demoUser角色才能访问
+        - test
+      securityCollections:
+        # name可以随便写
+        - name: test
+          patterns:
+            - /test/*
