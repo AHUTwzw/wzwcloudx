@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: keycloak
+server:
+  port: 8082
+keycloak:
+  # 表示是一个public的client
+  public-client: true
+  # keycloak的地址
+  auth-server-url: http://127.0.0.1:8080/auth
+  # keycloak中的realm
+  realm: cyberverse
+  # client ID
+  resource: app
+  always-refresh-token: true
+  cors: true
+  # 安全约束
+  securityConstraints:
+    - authRoles:
+        # 以下路径需要demoUser角色才能访问
+        - user
+      securityCollections:
+        # name可以随便写
+        - name: common user
+          patterns:
+            - /user/*

@@ -52,6 +52,9 @@
     <module>seata-order-service2001</module>
     <module>seata-order-service2002</module>
     <module>seata-order-service2003</module>
+    <module>cloud-im-common</module>
+    <module>cloud-im-client</module>
+    <module>keycloak</module>
   </modules>
   <packaging>pom</packaging>
 
